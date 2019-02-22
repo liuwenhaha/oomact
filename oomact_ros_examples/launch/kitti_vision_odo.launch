@@ -2,9 +2,9 @@
   <arg name="bag_file" default="/home/yannick/MasterThesis/data/2011_09_26_0035.bag"/>
 
    <node name="CalibrationNode" pkg="oomact_ros" type="CalibrationNode" output="screen">
-    <param name="config_file" value="$(find oomact_ros_examples)/cfg/kitti.info" />
+    <param name="config_file" value="$(find oomact_ros_examples)/cfg/kitti_vision_odo.info" />
     <param name="bag_file" value="$(arg bag_file)" />
-    <param name="output_file" value="/home/yannick/MasterThesis/data/kitti_out.info" />
+    <param name="output_file" value="/home/yannick/MasterThesis/data/out.info" />
   </node>
 
 </launch>

@@ -45,8 +45,9 @@ WheelOdometry::WheelOdometry(Model& model, const std::string& name, sm::value_st
       LOG(INFO) << "Calibrating wheel odometry!";
     if(!L->isToBeEstimated())
       LOG(INFO) << "Not estimating wheel distance L!";
-    if(getDelayVariable().isToBeEstimated())
-      LOG(INFO) << "Estimating wheelDelay!";
+    //for some reason crashes using this
+    //if(getDelayVariable().isToBeEstimated())
+    //  LOG(INFO) << "Estimating wheelDelay!";
 
     LOG(INFO) << "Assuming a wheel delay of " << double(getDelay()) << " in [" <<
         double(getDelayLowerBound()) << "," << double(getDelayUpperBound()) << "].";

@@ -31,18 +31,31 @@ sensors {
       cauchySigma2 "10"
     }
   }
-  b {
-    type pose
+  odo {
+    type odometry
 
     frame body
-    targetFrame world
+    groundFrame world
 
-    topic pose_imu
+    topic velodyne_points
 
     covPosition { sigma "0.01" }
     covOrientation { sigma "0.01" }
 
-    absoluteMeasurements false
+    absoluteMeasurements true
+
+    wheelBase 1
+    wheelRadiusLeft 1
+    wheelRadiusRight 1
+
+    assumedWheelBase 1
+    assumedWheelRadiusLeft 1
+    assumedWheelRadiusRight 1
+
+    noise {
+      lwVariance 0.1
+      rwVariance 0.1
+    }
 
     rotation {
       used true

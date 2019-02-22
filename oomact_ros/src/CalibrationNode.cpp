@@ -7,6 +7,7 @@
 #include <aslam/calibration/model/sensors/PoseSensor.h>
 #include <aslam/calibration/model/sensors/PositionSensor.h>
 #include <aslam/calibration/model/sensors/Imu.h>
+#include <aslam/calibration/model/sensors/WheelOdometry.h>
 
 #include <sm/MatrixArchive.hpp>
 
@@ -42,6 +43,9 @@ void loadSensorParameters(const cal::ValueStoreRef vs_sensors,
       sensors.emplace_back(new cal::PositionSensor(*model, sensor_name, vs_sensors));
     } else if (sensor_type == "imu") {
       sensors.emplace_back(new cal::Imu(*model, sensor_name, vs_sensors));
+    } else if (sensor_type == "odometry"){
+      sensors.emplace_back(new cal::WheelOdometry(*model, sensor_name, vs_sensors));
+      std::cout<<"got here"<<std::endl;
     } else {
       ROS_ERROR("  loading failed, sensor type not supported.");
     }
