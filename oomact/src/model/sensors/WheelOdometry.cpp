@@ -170,6 +170,7 @@ void WheelOdometry::addMeasurementErrorTerms(CalibratorI & calib, const Calibrat
     }*/
     {
       auto R_m_r = getTransformationExpressionTo(robot, groundFrame_).toRotationExpression();
+      //auto R_m_r = getTransformationExpressionToAtMeasurementTimestamp(calib, timestamp, targetFrame_, true);
       auto v_m_mr = robot.getVelocity(getFrame(), groundFrame_);
       auto v_r_mr = R_m_r.inverse() * v_m_mr;
 

@@ -17,6 +17,11 @@
 using namespace aslam::calibration;
 using namespace aslam::calibration::test;
 
+/** This tests extrinsic calibration for wheel and pose sensor using a straight line
+ * as trajectory
+ * Note that right now initial and final values are identical (I'm not sure whats
+ * observable from a straight line though either) otherwise fails test
+ */
 TEST(CalibrationTestSuite, testWheelOdometryCalibrationStaight) {
   auto vs = ValueStoreRef::fromFile("acceptance/wheelOdometry-pose.info");
 
@@ -26,9 +31,9 @@ TEST(CalibrationTestSuite, testWheelOdometryCalibrationStaight) {
   PoseTrajectory traj(m, "traj");
   m.addModulesAndInit(psA, wheelOdometry, traj);
 
-//  wheelOdometry.getTranslationVariable().set({0., 1., 0.});
-//  const double rotUpdate[] = {0., 0.1, 0.};
-//  wheelOdometry.getRotationVariable().update(rotUpdate, 3);
+  wheelOdometry.getTranslationVariable().set({0., 1., 0.});
+  const double rotUpdate[] = {0., 0.1, 0.};
+  wheelOdometry.getRotationVariable().update(rotUpdate, 3);
 
   auto spModel = aslam::to_local_shared_ptr(m);
   auto c = createBatchCalibrator(vs.getChild("calibrator"), spModel);
@@ -50,13 +55,18 @@ TEST(CalibrationTestSuite, testWheelOdometryCalibrationStaight) {
     c->addMeasurementTimestamp(p.time, wheelOdometry);
   }
 
-//  EXPECT_NEAR(1, wheelOdometry.getTranslationToParent()[1], 0.0001);
-//  EXPECT_NEAR(0.05, wheelOdometry.getRotationQuaternionToParent()[1], 0.01);
+  EXPECT_NEAR(1, wheelOdometry.getTranslationToParent()[1], 0.0001);
+  EXPECT_NEAR(0.05, wheelOdometry.getRotationQuaternionToParent()[1], 0.01);
   c->calibrate();
   EXPECT_NEAR(0, wheelOdometry.getTranslationToParent()[1], 0.0001);
   EXPECT_NEAR(0, wheelOdometry.getRotationQuaternionToParent()[1], 0.01);
 }
 
+/** This tests extrinsic calibration for wheel and pose sensor using an eight
+ * as trajectory
+ * Note that right now initial and final values are identical (I'm not sure whats
+ * observable from an eight though either) otherwise fails test.
+ */
 TEST(CalibrationTestSuite, testWheelOdometryCalibrationEight) {
   auto vs = ValueStoreRef::fromFile("acceptance/wheelOdometry-pose.info");
 
@@ -66,9 +76,9 @@ TEST(CalibrationTestSuite, testWheelOdometryCalibrationEight) {
   PoseTrajectory traj(m, "traj");
   m.addModulesAndInit(psA, wheelOdometry, traj);
 
-//  wheelOdometry.getTranslationVariable().set({0., 1., 0.});
-//  const double rotUpdate[] = {0., 0.1, 0.};
-//  wheelOdometry.getRotationVariable().update(rotUpdate, 3);
+  wheelOdometry.getTranslationVariable().set({0., 1., 0.});
+  const double rotUpdate[] = {0., 0.1, 0.};
+  wheelOdometry.getRotationVariable().update(rotUpdate, 3);
 
   auto spModel = aslam::to_local_shared_ptr(m);
   auto c = createBatchCalibrator(vs.getChild("calibrator"), spModel);
@@ -90,8 +100,8 @@ TEST(CalibrationTestSuite, testWheelOdometryCalibrationEight) {
     c->addMeasurementTimestamp(p.time, wheelOdometry);
   }
 
-//  EXPECT_NEAR(1, wheelOdometry.getTranslationToParent()[1], 0.0001);
-//  EXPECT_NEAR(0.05, wheelOdometry.getRotationQuaternionToParent()[1], 0.01);
+  EXPECT_NEAR(1, wheelOdometry.getTranslationToParent()[1], 0.0001);
+  EXPECT_NEAR(0.05, wheelOdometry.getRotationQuaternionToParent()[1], 0.01);
   c->calibrate();
   EXPECT_NEAR(0, wheelOdometry.getTranslationToParent()[1], 0.0001);
   EXPECT_NEAR(0, wheelOdometry.getRotationQuaternionToParent()[1], 0.01);

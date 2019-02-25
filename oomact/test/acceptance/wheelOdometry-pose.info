@@ -42,13 +42,15 @@ model {
 		}
 
 		rotation {
+			used true
 			yaw 0
 			pitch 0
 			roll 0
 		}
 		translation {
+			used true
 			x 0
-			y 0
+			y 0.1
 			z 0
 		}
 		delay 0 {

@@ -19,7 +19,7 @@ void initGloogleLogging(unsigned verbosity) {
 }
 
 int main(int argc, char** argv) {
-  int verbosity = 0;
+  int verbosity = 10;
   if(argc > 1 && std::string("-v") == argv[1]){
     verbosity = 2;
   }
