@@ -50,7 +50,7 @@ model {
 		translation {
 			used true
 			x 0
-			y 0.1
+			y 0
 			z 0
 		}
 		delay 0 {

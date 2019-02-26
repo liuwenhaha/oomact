@@ -1,3 +1,5 @@
+#include <glog/logging.h>
+
 #include <aslam/calibration/SensorId.h>
 #include <sm/kinematics/quaternion_algebra.hpp>
 
@@ -59,8 +61,8 @@ MockMotionCaptureSource MmcsEight([](Timestamp now, MotionCaptureSource::PoseSta
   } else { // right circle
     xOffset = 0;
   }
-
-  p.q = sm::kinematics::axisAngle2quat({0, 0, -(angleRad + M_PI / 2)}); // to passive quaternion yielding a positive rotation
+  //LOG(WARNING)<<"aabbcc"<<sm::kinematics::axisAngle2quat({0, 0, (angleRad + M_PI / 2)});
+  p.q = sm::kinematics::axisAngle2quat({0, 0, (angleRad + M_PI / 2)}); // to passive quaternion yielding a positive rotation //Is this - correct here (I think should be +)
   p.p = Eigen::Vector3d::UnitX() * (cos(angleRad) + xOffset) + Eigen::Vector3d::UnitY() * sin(angleRad);
 });
 

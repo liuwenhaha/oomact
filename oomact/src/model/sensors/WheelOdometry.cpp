@@ -60,10 +60,14 @@ void WheelOdometry::registerWithModel() {
 }
 
 void WheelOdometry::setActive(bool spatial, bool temporal){
-  R_l->setActive(spatial);
-  R_r->setActive(spatial);
-  L->setActive(spatial && L->isToBeEstimated());
-  DelayCv::setActive(temporal);
+  if(isUsed())//consistency with others
+  {
+    R_l->setActive(spatial);
+    R_r->setActive(spatial);
+    L->setActive(spatial && L->isToBeEstimated());
+    DelayCv::setActive(temporal);
+    PoseCv::setActive(spatial); //I guess this is needed
+  }
 }
 
 void WheelOdometry::writeConfig(std::ostream& out) const {
