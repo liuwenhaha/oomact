@@ -24,7 +24,7 @@ using namespace aslam::calibration::test;
  * observable from a straight line though either) otherwise fails test
  */
 TEST(CalibrationTestSuite, testWheelOdometryCalibrationStaight) {
-  auto vs = ValueStoreRef::fromFile("../../../src/oomact/oomact/test/acceptance/wheelOdometry-pose.info");
+  auto vs = ValueStoreRef::fromFile("acceptance/wheelOdometry-pose.info");
 
   FrameGraphModel m(vs.getChild("model"));
   PoseSensor psA(m, "pose");
@@ -72,7 +72,7 @@ TEST(CalibrationTestSuite, testWheelOdometryCalibrationStaight) {
  * observable from an eight though either) otherwise fails test.
  */
 TEST(CalibrationTestSuite, testWheelOdometryCalibrationEight) {
-  auto vs = ValueStoreRef::fromFile("../../../src/oomact/oomact/test/acceptance/wheelOdometry-pose.info");
+  auto vs = ValueStoreRef::fromFile("acceptance/wheelOdometry-pose.info");
 
   FrameGraphModel m(vs.getChild("model"));
   PoseSensor psA(m, "pose");
@@ -113,7 +113,7 @@ TEST(CalibrationTestSuite, testWheelOdometryCalibrationEight) {
 
 
 TEST(CalibrationTestSuite, testWheelOdometryCalibrationEightNew) {
-  auto vs = ValueStoreRef::fromFile("../../../src/oomact/oomact/test/acceptance/wheelOdometry-pose.info");
+  auto vs = ValueStoreRef::fromFile("acceptance/wheelOdometry-pose.info");
 
   FrameGraphModel m(vs.getChild("model"));
   PoseSensor psA(m, "pose");

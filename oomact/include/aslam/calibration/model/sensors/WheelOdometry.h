@@ -25,13 +25,26 @@ class WheelOdometry : public Sensor {
     return L;
   }
 
+  ScalarCvSp& getL(){
+    return L;
+  }
+
   const ScalarCvSp& getWheelRadiusL() const {
+    return R_l;
+  }
+
+  ScalarCvSp& getWheelRadiusL(){
     return R_l;
   }
 
   const ScalarCvSp& getWheelRadiusR() const {
     return R_r;
   }
+
+  ScalarCvSp& getWheelRadiusR(){
+    return R_r;
+  }
+
 
   const MeasurementsContainer<WheelSpeedsMeasurement> & getMeasurements() const {
     return measurements_ ;
@@ -43,8 +56,9 @@ class WheelOdometry : public Sensor {
   void registerWithModel() override;
   void setActive(bool spatial, bool temporal) override;
 
- public:
-  /// Axe length
+
+ private:
+ /// Axe length
   ScalarCvSp L;
   /// Left wheel radius
   ScalarCvSp R_l;
@@ -52,7 +66,7 @@ class WheelOdometry : public Sensor {
   ScalarCvSp R_r;
 
   const double assumedWheelBase, assumedWheelRadiusLeft, assumedWheelRadiusRight;
- private:
+
   mutable MeasurementsContainer<WheelSpeedsMeasurement> measurements_;
   double lwVariance;
   double rwVariance;

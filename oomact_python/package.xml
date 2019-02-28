@@ -10,6 +10,8 @@
   <buildtool_depend>catkin_simple</buildtool_depend>.
 
   <build_depend>sm_python</build_depend>
+  <build_depend>oomact</build_depend>
+  <build_depend>aslam_backend</build_depend>
 
   <test_depend>unittest</test_depend>
 </package>
