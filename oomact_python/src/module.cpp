@@ -3,6 +3,8 @@
 // if you are using the numpy_eigen interface
 #include <numpy_eigen/boost_python_headers.hpp>
 
+//models
+void exportModel();
 void exportFrameGraphModel();
 //measurements
 void exportWheelSpeedsMeasurement();
@@ -16,8 +18,10 @@ void exportAbstractCalibrator();
 void exportBatchCalibrator();
 void exportCreateBatchCalibrator();
 // The title of this library must match exactly
-BOOST_PYTHON_MODULE(liboomact_backend_python)
+BOOST_PYTHON_MODULE(liboomact_python)
 {
+    //models
+    exportModel();
     exportFrameGraphModel();
     //measurements
     exportWheelSpeedsMeasurement();

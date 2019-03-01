@@ -2,4 +2,4 @@
 import numpy_eigen
 import sm
 # Import the the C++ exports from your package library.
-from liboomact_backend_python import *
+from liboomact_python import *

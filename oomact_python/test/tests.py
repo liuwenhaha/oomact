@@ -9,6 +9,7 @@ from numpy.testing import *
 from oomact.statistics import *
 from oomact.tools import *
 
+import oomact_backend as oomact
 
 i = np.array([1, 0, 0, 0])
 j = np.array([0, 1, 0, 0])
@@ -70,6 +71,21 @@ class Tests(unittest.TestCase):
         assert_array_almost_equal(qVar, 3 * sigma * sigma, 2)
 
 
+class WheelOdometryCalibrationTests(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    
+    def testWheelOdometryCalibrationStraight(self):
+        #load config file somehow
+        vs=sm.ValueStoreRef.fromFile("acceptance/wheelOdometry-pose.info") #does this not exist for python yet
+
+        #this does not work yet
+        m=oomact.FrameGraphModel(vs.getChild("model"))
+
+        self.assertAlmostEqual(1,1)
+
+
 if __name__ == '__main__':
     import rostest
     rostest.rosrun('oomact_python', 'tests', Tests)
+    rostest.rosrun('oomact_python', 'wheel_odometry_calibration_tests', WheelOdometryCalibrationTests)

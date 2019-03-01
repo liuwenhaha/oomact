@@ -6,8 +6,6 @@ catkin_simple(ALL_DEPS_REQUIRED)
 
 
 
-
-
 # enable warnings
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unknown-pragmas")
 
@@ -40,10 +38,8 @@ SET(PY_PACKAGE_DIR python/oomact)
 if(CATKIN_ENABLE_TESTING)
   catkin_add_nosetests(
     test/tests.py
+    DEPENDENCIES ${PROJECT_NAME}
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/test
   )
 endif()
 
-
-cs_install()
-cs_export()
