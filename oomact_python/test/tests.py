@@ -9,7 +9,7 @@ from numpy.testing import *
 from oomact.statistics import *
 from oomact.tools import *
 
-import oomact_backend as oomact
+import oomact as oomact
 
 i = np.array([1, 0, 0, 0])
 j = np.array([0, 1, 0, 0])

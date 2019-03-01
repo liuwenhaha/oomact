@@ -58,7 +58,7 @@ class WheelOdometry : public Sensor {
 
 
  private:
- /// Axe length
+  /// Axe length
   ScalarCvSp L;
   /// Left wheel radius
   ScalarCvSp R_l;

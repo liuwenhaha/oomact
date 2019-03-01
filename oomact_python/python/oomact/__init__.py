@@ -3,7 +3,7 @@ import numpy_eigen
 import sm
 
 # Import the the C++ exports from your package library.
-#from liboomact_python import *
+from liboomact_python import *
 # TODO: Possibly import incremental_calibration_python too
 
 #class TransformationDv(object):
