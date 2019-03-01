@@ -33,7 +33,7 @@ void exportSensor()
     class_<Sensor, boost::shared_ptr<Sensor>/*, bases<PoseCv*/>("Sensor", init<Model&, std::string, sm::value_store::ValueStoreRef>())
     //      BoundedTimeExpression getBoundedTimestampExpression(const CalibratorI& calib, Timestamp t) const
     .def("getBoundedTimestampExpression", &Sensor::getBoundedTimestampExpression)
-    //problem with these 3 is const (and I dont need them rn)
+    //TODO C: complete exports for all functions
     //      aslam::backend::TransformationExpression getTransformationExpressionToAtMeasurementTimestamp(const CalibratorI & calib, Timestamp t, const Frame & to, bool ignoreBounds = false) const
     //.def("getTransformationExpressionToAtMeasurementTimestamp"), &Sensor::getTransformationExpressionToAtMeasurementTimestamp)
     //      virtual aslam::backend::TransformationExpression getTransformationExpressionTo(const ModelAtTime & robotModel, const Frame & to) const;
@@ -73,7 +73,4 @@ void exportWheelOdometry()
     .def("getMeasurements", &WheelOdometry::getMeasurements, return_value_policy<copy_const_reference>())
     ;
 }
-// Free cass
-//.def("getMeasurements1", static_cast<ReturnType(*)(argType, argTyp2)>(&method))
-// Class
-//.def("getMeasurements1", static_cast<ReturnType(Class::*)(argType, argTyp2)>(&Class::method))
+

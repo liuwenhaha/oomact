@@ -24,6 +24,7 @@ void exportBatchCalibratorI()
     .def("calibrate", &BatchCalibratorI::calibrate)
     ;
 }
+//I don't know if we need this class, and if we do how to do it as there is no header
 /*void exportBatchCalibrator()
 {
     class_<BatchCalibrator, boost::shared_ptr<BatchCalibrator>, bases<AbstractCalibrator>>("BatchCalibraotr", init<ValueStoreRef, std::shared_ptr<Model>>)
