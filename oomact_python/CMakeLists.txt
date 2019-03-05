@@ -19,7 +19,7 @@ endif()
 # This functions take TARGET_NAME PYTHON_MODULE_DIRECTORY sourceFile1 [sourceFile2 ...]
 add_python_export_library(${PROJECT_NAME} python/oomact
   src/module.cpp
-  src/FrameGraphModel.cpp
+  src/Models.cpp
   src/Measurements.cpp
   src/Sensors.cpp
   src/Calibrators.cpp

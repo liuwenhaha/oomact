@@ -6,6 +6,10 @@ import sm
 from liboomact_python import *
 # TODO: Possibly import incremental_calibration_python too
 
+def addModulesAndInit(framegraphmodel, *args):
+    for a in args:
+        framegraphmodel.addModule(a)
+    framegraphmodel.init()
 #class TransformationDv(object):
 #    def __init__(self, transformation, rotationActive=True, translationActive=True ):
 #        if not type(transformation) == sm.Transformation:

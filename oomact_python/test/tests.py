@@ -77,17 +77,17 @@ class WheelOdometryCalibrationTests(unittest.TestCase):
     
     def testWheelOdometryCalibrationStraight(self):
         #load config file somehow (does not seem to exist)
-        #vs = sm.ValueStoreRef()
-        #vs=vs.fromFile("acceptance/wheelOdometry-pose.info") #does this not exist for python yet
         vs=sm.valueStoreRefFromFile("/home/yannick/catkin_ws/src/oomact/oomact/test/acceptance/wheelOdometry-pose.info")
 
         #this does not work yet
         m = oomact.FrameGraphModel(vs.getChild("model"))
 
-        psA = oomact.PoseSensor(m, "pose", vs)
-        wheelOdometry = oomact.WheelOdometry(m, "wheelOdometry", vs)
-        traj = PoseTrajectory(m, "traj", vs)
-        m.addModulesAndInit(psA, wheelOdometry, traj)
+        psA = oomact.PoseSensor(m, "pose")
+        wheelOdometry = oomact.WheelOdometry(m, "wheelOdometry")
+        traj = oomact.PoseTrajectory(m, "traj")
+        oomact.addModulesAndInit(m, psA, wheelOdometry, traj)
+
+        c = oomact.createBatchCalibrator(vs.getChild("calibrator"), m)
 
         self.assertAlmostEqual(1,1)
 

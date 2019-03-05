@@ -6,6 +6,7 @@
 //models
 void exportModel();
 void exportFrameGraphModel();
+void exportPoseTrajectory();
 //measurements
 void exportWheelSpeedsMeasurement();
 void exportAccelerometerMeasurement();
@@ -13,6 +14,7 @@ void exportGyroscopeMeasurement();
 //sensors
 void exportPoseCv();
 void exportDelayCv();
+void exportModule();
 void exportSensor();
 void exportPoseSensorI();
 void exportAbstractPoseSensor();
@@ -23,7 +25,7 @@ void exportImu();
 void exportAbstractCalibrator();
 void exportBatchCalibratorI();
 //void exportBatchCalibrator();
-//void exportCreateBatchCalibrator();
+void exportCreateBatchCalibrator();
 // The title of this library must match exactly
 BOOST_PYTHON_MODULE(liboomact_python)
 {
@@ -37,6 +39,8 @@ BOOST_PYTHON_MODULE(liboomact_python)
     //sensors
     exportPoseCv();
     exportDelayCv();
+    exportModule();
+    exportPoseTrajectory();
     exportSensor();
     exportPoseSensorI();
     exportAbstractPoseSensor();
@@ -47,5 +51,5 @@ BOOST_PYTHON_MODULE(liboomact_python)
     exportAbstractCalibrator();
     exportBatchCalibratorI();
     //exportBatchCalibrator();
-    //exportCreateBatchCalibrator();
+    exportCreateBatchCalibrator();
 }

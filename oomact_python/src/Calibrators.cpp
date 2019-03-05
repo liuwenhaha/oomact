@@ -32,9 +32,9 @@ void exportBatchCalibratorI()
     .def("calibrate", &BatchCalibrator::calibrate)
     ;
 }*/
-/*void exportCreateBatchCalibrator()
+void exportCreateBatchCalibrator()
 {
     //std::unique_ptr<BatchCalibratorI> createBatchCalibrator(ValueStoreRef vs, std::shared_ptr<Model> model)
     def("createBatchCalibrator", &createBatchCalibrator)
     ;
-}*/
+}

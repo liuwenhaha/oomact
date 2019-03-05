@@ -33,11 +33,6 @@ void exportFrameGraphModel()
 {
     typedef std::vector<const Frame*> FramePointers;
 
-    class_<FramePointers>("FramePointerVector")
-    .def(boost::python::vector_indexing_suite<FramePointers>() )
-    .def("__iter__", boost::python::iterator<FramePointers>())
-    ;
-
     //FrameGraphModel(ValueStoreRef config, std::shared_ptr<ConfigPathResolver> configPathResolver = nullptr, const std::vector<const Frame *> frames = {})
     class_<FrameGraphModel, boost::shared_ptr<FrameGraphModel>, bases<Model>, boost::noncopyable>("FrameGraphModel", no_init)
     .def(init<ValueStoreRef, std::shared_ptr<ConfigPathResolver>, const FramePointers>()) //how to define default values

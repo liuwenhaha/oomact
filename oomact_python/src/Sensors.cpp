@@ -11,6 +11,8 @@
 
 #include <aslam/calibration/model/fragments/PoseCv.h>
 #include <aslam/calibration/model/fragments/DelayCv.h>
+#include <aslam/calibration/model/Module.h>
+#include <aslam/calibration/model/PoseTrajectory.h>
 #include <aslam/calibration/model/Sensor.h>
 #include <aslam/calibration/model/sensors/PoseSensorI.h>
 #include <aslam/calibration/model/sensors/AbstractPoseSensor.h>
@@ -41,11 +43,25 @@ void exportDelayCv()
     ;
 }
 
+void exportModule()
+{
+    class_<Module, boost::shared_ptr<Module>>("Module", init<Model&, std::string, sm::value_store::ValueStoreRef, bool>())
+    .def(init<const Module&>())
+    ;
+}
+
+void exportPoseTrajectory()
+{
+    class_<PoseTrajectory, boost::shared_ptr<PoseTrajectory>, bases<Module>, boost::noncopyable>("PoseTrajectory", init<Model &, const std::string &, sm::value_store::ValueStoreRef>())
+    .def(init<Model &, const std::string &>())
+    ;
+}
+
 //This is the abstract parent class for sensors (does indirect inheritance work like that?, what about multiple inheritance)
 void exportSensor()
 {
     //bases makes problems, I think because PoseCb has no constructor exposed (see above)
-    class_<Sensor, boost::shared_ptr<Sensor>, bases<PoseCv, DelayCv>>("Sensor", init<Model&, std::string, sm::value_store::ValueStoreRef>())
+    class_<Sensor, boost::shared_ptr<Sensor>, bases<PoseCv, DelayCv, Module>>("Sensor", init<Model&, std::string, sm::value_store::ValueStoreRef>())
     //      BoundedTimeExpression getBoundedTimestampExpression(const CalibratorI& calib, Timestamp t) const
     .def("getBoundedTimestampExpression", &Sensor::getBoundedTimestampExpression)
     //TODO C: complete exports for all functions
