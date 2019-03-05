@@ -116,8 +116,8 @@ TEST(CalibrationTestSuite, testWheelOdometryCalibrationEightNew) {
   auto vs = ValueStoreRef::fromFile("acceptance/wheelOdometry-pose.info");
 
   FrameGraphModel m(vs.getChild("model"));
-  PoseSensor psA(m, "pose");
-  WheelOdometry wheelOdometry(m, "wheelOdometry");
+  PoseSensor psA(m, "pose", vs);
+  WheelOdometry wheelOdometry(m, "wheelOdometry", vs);
   PoseTrajectory traj(m, "traj");
   m.addModulesAndInit(psA, wheelOdometry, traj);
 

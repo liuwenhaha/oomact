@@ -3,6 +3,8 @@
 #include <boost/python.hpp>
 
 #include <aslam/calibration/data/WheelSpeedsMeasurement.h>
+#include <aslam/calibration/data/AccelerometerMeasurement.h>
+#include <aslam/calibration/data/GyroscopeMeasurement.h>
 
 
 using namespace boost::python;
@@ -10,8 +12,20 @@ using namespace aslam::calibration;
 
 
 
-void exportWheeSpedsMeasurement()
+void exportWheelSpeedsMeasurement()
 {
     class_<WheelSpeedsMeasurement>("WheelSpeedsMeasurement")
+    ;
+}
+
+void exportAccelerometerMeasurement()
+{
+    class_<AccelerometerMeasurement>("AccelerometerMeasurement")
+    ;
+}
+
+void exportGyroscopeMeasurement()
+{
+    class_<GyroscopeMeasurement>("GyroscopeMeasurement")
     ;
 }
